@@ -7,7 +7,6 @@ public class PlayerMovement : MonoBehaviour
     public float forwardForce = 2000f;
     public float sidewaysForce = 500f;
 
-    // Separate lateral movement control from input
     public void MoveLeft()
     {
         rb.AddForce(-sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
