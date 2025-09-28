@@ -6,9 +6,18 @@ public class Score : MonoBehaviour
     public Transform player;
     public Text scoreText;
 
-    // Update is called once per frame
+    private int nextMilestone = 100;
+
     void Update()
     {
-        scoreText.text = player.position.z.ToString("0");
+        int currentScore = Mathf.FloorToInt(player.position.z);
+        scoreText.text = currentScore.ToString();
+
+        if (currentScore >= nextMilestone)
+        {
+            GameEvents.RaiseScoreMilestoneReached();
+            Debug.Log("Milestone reached: " + nextMilestone);
+            nextMilestone += 100;
+        }
     }
 }
